@@ -34,11 +34,11 @@ function playRound(){
 
     // Determine the overall winner
     if (humanScore > computerScore) {
-        console.log(alert,"Congratulations! You win the game!");
+        alert("Congratulations! You win the game!");
     } else if (humanScore < computerScore) {
-        console.log(alert,"Sorry! The computer wins the game!");
+        alert("Sorry! The computer wins the game!");
     } else {
-        console.log(alert,"It's a tie overall!");
+        alert("It's a tie overall!");
     }
 }
 //help function to get computer choice
