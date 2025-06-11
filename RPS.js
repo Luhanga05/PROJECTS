@@ -44,9 +44,12 @@ function playRound(humanChoice) {
 function declareFinalWinner(){
     if(humanScore=== 5){
         finalWinnerDiv.innerHTML = "You are the final winner!";
+        finalWinnerDiv.style.color = "green";
     }else{
         finalWinnerDiv.innerHTML = "Computer is the final winner!";
+        finalWinnerDiv.style.color = "red";
     }
+    restartBTN.style.display = "inline-block"
 }
 
 function disableButtons() { 
@@ -59,3 +62,20 @@ function disableButtons() {
 document.getElementById('Rock').addEventListener('click', () => playRound('rock'));
 document.getElementById('Paper').addEventListener('click', () => playRound('paper'));
 document.getElementById('Scissors').addEventListener('click', () => playRound('scissors'));
+
+const restartBTN =  document.getElementById("restart");
+restartBTN.addEventListener("click",restartGame);
+
+function restartGame() {
+    humanScore = 0;
+    computerScore = 0;
+    resultsDiv.innerHTML="";
+    finalWinnerDiv.textContent="";
+    finalWinnerDiv.className="";
+    document.getElementById("rock").disabled = false;
+    document.getElementById("paper").disabled = false;
+    document.getElementById("scissors").disabled = false;
+    restartBTN.style.display = "none"; //hide again
+
+}
+

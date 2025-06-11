@@ -14,10 +14,21 @@ button{
     margin: 5px;
     padding: 10px 20px;
     font-size: 16px;
+    background-color: brown;
+    border-radius: 5px;
+    color: white;
 }
 #final-winner{
     font-size: 22px;
     font-weight: bold;
     margin-top: 15px;
     color: orange;
+}
+#restart{
+    display: none;
+     margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: aqua;
+    color: white;
 }
