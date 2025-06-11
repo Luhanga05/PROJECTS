@@ -1,6 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
-const resultsDiv = document.getElementById("results");
+const resultsDiv = document.getElementById("result");
 const finalWinnerDiv = document.getElementById("finalWinner");
 
 function getComputerChoice() {
@@ -56,12 +56,6 @@ function disableButtons() {
 }
 
 // Event listeners for the buttons
-document.getElementById('Rock').addEventListener('click', () => {
-    playRound('rock');
-});
-document.getElementById('Paper').addEventListener('click', () => {
-    playRound('paper');
-});
-document.getElementById('Scissors').addEventListener('click', () => {
-    playRound('scissors');
-});
+document.getElementById('Rock').addEventListener('click', () => playRound('rock'));
+document.getElementById('Paper').addEventListener('click', () => playRound('paper'));
+document.getElementById('Scissors').addEventListener('click', () => playRound('scissors'));
