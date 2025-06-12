@@ -76,6 +76,5 @@ function restartGame() {
     document.getElementById("paper").disabled = false;
     document.getElementById("scissors").disabled = false;
     restartBTN.style.display = "none"; //hide again
-
 }
 
