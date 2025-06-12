@@ -69,12 +69,12 @@ restartBTN.addEventListener("click",restartGame);
 function restartGame() {
     humanScore = 0;
     computerScore = 0;
-    resultsDiv.innerHTML="";
-    finalWinnerDiv.textContent="";
-    finalWinnerDiv.className="";
-    document.getElementById("rock").disabled = false;
-    document.getElementById("paper").disabled = false;
-    document.getElementById("scissors").disabled = false;
-    restartBTN.style.display = "none"; //hide again
+    resultsDiv.innerHTML = "";
+    finalWinnerDiv.textContent = "";
+    finalWinnerDiv.style.color = ""; // reset color instead of className
+    document.getElementById("Rock").disabled = false;
+    document.getElementById("Paper").disabled = false;
+    document.getElementById("Scissors").disabled = false;
+    restartBTN.style.display = "none"; // hide again
 }
 
