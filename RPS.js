@@ -77,4 +77,4 @@ function restartGame() {
     document.getElementById("Scissors").disabled = false;
     restartBTN.style.display = "none"; // hide again
 }
-
+//code is complete
