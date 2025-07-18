@@ -1,64 +1,83 @@
-function playGame() {
-    //Scores inside the game
 let humanScore = 0;
 let computerScore = 0;
+const resultsDiv = document.getElementById("result");
+const finalWinnerDiv = document.getElementById("finalWinner");
 
-function playRound(){
-    const humanChoice = getHumanChoice();
+function getComputerChoice() {
+    const randomNumber = Math.random();
+    if (randomNumber < 0.33) {
+        return "rock";
+    } else if (randomNumber < 0.66) {
+        return "paper";
+    } else {
+        return "scissors";
+    }
+}
+
+function playRound(humanChoice) {
     const computerChoice = getComputerChoice();
-    console.log(`You chose: ${humanChoice}`);
-    console.log(`Computer chose: ${computerChoice}`);
-
+    let result = "";
     if (humanChoice === computerChoice) {
-        console.log("It's a tie!");
+        result = "It's a tie!";
     } else if (
         (humanChoice === "rock" && computerChoice === "scissors") ||
         (humanChoice === "paper" && computerChoice === "rock") ||
         (humanChoice === "scissors" && computerChoice === "paper")
     ) {
-        console.log("You win!");
+        result = "You win!";
         humanScore++;
     } else {
-        console.log("You lose!");
+        result = "You lose!";
         computerScore++;
     }
-}
-    // Play 5 rounds
-    for (let i = 0; i < 5; i++) {
-        console.log(`\nRound ${i + 1}`);
-        playRound();
-    }
-    // Display final scores 
-    console.log(`\nFinal Scores: You ${humanScore} - ${computerScore} Computer`);
-    console.log("Thanks for playing!");
 
-    // Determine the overall winner
-    if (humanScore > computerScore) {
-        console.log("Congratulations! You win the game!");
-    } else if (humanScore < computerScore) {
-        console.log("Sorry! The computer wins the game!");
-    } else {
-        console.log("It's a tie overall!");
+    //Display the round results and scores
+    resultsDiv.innerHTML =
+        `your choose: <b>${humanChoice}</b><br> computer choose: <b>${computerChoice}</b><br> ${result}<br> you: ${humanScore}|computer: ${computerScore}`;
+
+        if (humanScore === 5 || computerScore === 5) {
+            declareFinalWinner();
+            disableButtons();
     }
 }
-//help function to get computer choice
-function getHumanChoice(){
-    const userInput = prompt("Enter your choice: rock, paper, or scissors");//prompting user for input  
-    return userInput.toLowerCase();//lowercase to avoid case sensitivity issues    
+
+function declareFinalWinner(){
+    if(humanScore=== 5){
+        finalWinnerDiv.innerHTML = "You are the final winner!";
+        finalWinnerDiv.style.color = "green";
+    }else{
+        finalWinnerDiv.innerHTML = "Computer is the final winner!";
+        finalWinnerDiv.style.color = "red";
+    }
+    restartBTN.style.display = "inline-block"
 }
-//help function to get computer choice
-function getComputerChoice(){
-    const randomNumber = Math.random();
-    
-    if (randomNumber<0.33){
-        return "rock";
-    }
-    else if (randomNumber<0.66){
-        return "paper";
-    }
-    else {
-        return "scissors";
-    }
+
+// function to disable buttons after completing a round
+function disableButtons() { 
+    document.getElementById('Rock').disabled = true;
+    document.getElementById('Paper').disabled = true;
+    document.getElementById('Scissors').disabled = true;
 }
-// Start the game
-playGame();
+
+// Event listeners for the buttons
+document.getElementById('Rock').addEventListener('click', () => playRound('rock'));
+document.getElementById('Paper').addEventListener('click', () => playRound('paper'));
+document.getElementById('Scissors').addEventListener('click', () => playRound('scissors'));
+
+// restart function
+const restartBTN =  document.getElementById("restart");
+restartBTN.addEventListener("click",restartGame);
+
+// restart parameters
+function restartGame() {
+    humanScore = 0;
+    computerScore = 0;
+    resultsDiv.innerHTML = "";
+    finalWinnerDiv.textContent = "";
+    finalWinnerDiv.style.color = ""; // reset color instead of className
+    document.getElementById("Rock").disabled = false;
+    document.getElementById("Paper").disabled = false;
+    document.getElementById("Scissors").disabled = false;
+    restartBTN.style.display = "none"; // hide again
+}
+//code is complete
