@@ -52,6 +52,7 @@ function declareFinalWinner(){
     restartBTN.style.display = "inline-block"
 }
 
+// function to disable buttons after completing a round
 function disableButtons() { 
     document.getElementById('Rock').disabled = true;
     document.getElementById('Paper').disabled = true;
@@ -63,9 +64,11 @@ document.getElementById('Rock').addEventListener('click', () => playRound('rock'
 document.getElementById('Paper').addEventListener('click', () => playRound('paper'));
 document.getElementById('Scissors').addEventListener('click', () => playRound('scissors'));
 
+// restart function
 const restartBTN =  document.getElementById("restart");
 restartBTN.addEventListener("click",restartGame);
 
+// restart parameters
 function restartGame() {
     humanScore = 0;
     computerScore = 0;
